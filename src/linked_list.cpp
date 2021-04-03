@@ -110,14 +110,23 @@ Element LinkedList::Remove(int index) {
   return {};
 }
 
-void LinkedList::Clear() {
-  // Tip 1: люди в черном (MIB) пришли стереть вам память
-  // напишите свой код здесь ...
-  size_ = 0;
-  head_ = nullptr;
-  tail_ = nullptr;
+    void LinkedList::Clear()
+    {
+        // Tip 1: люди в черном (MIB) пришли стереть вам память
 
-}
+        Node *current_node = head_;
+        Node *delete_node;
+        size_ = 0;
+        head_ = nullptr;
+        tail_ = nullptr;
+
+        while (current_node != nullptr)
+        {
+            delete_node = current_node;
+            current_node = current_node -> next;
+            delete delete_node;
+        }
+    }
 
 Element LinkedList::Get(int index) const {
   internal::check_out_of_range(index, 0, size_);
